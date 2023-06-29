@@ -1,0 +1,18 @@
+Install helm
+-------------------
+[ Source: https://helm.sh/docs/intro/install/ : see from script ]
+
+$ curl -fsSL -o get_helm.sh https://raw.githubusercontent.com/helm/helm/master/scripts/get-helm-3
+$ chmod 700 get_helm.sh
+$ ./get_helm.sh
+
+# verify helm installation
+--------------------------
+❯❯ helm list -A
+NAME	NAMESPACE	REVISION	UPDATED	STATUS	CHART	APP VERSION
+# To list of all deployed releases
+$ helm list -A
+# To view available charts
+$ helm search repo
+# view repository list
+$ helm repo list
