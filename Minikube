@@ -1,0 +1,74 @@
+#####
+Source: 
+https://medium.com/rahasak/deploying-5g-core-network-with-free5gc-kubernets-and-helm-charts-29741cea3922
+#####
+
+# install required packages
+sudo apt update -y
+sudo apt upgrade -y
+sudo apt install -y curl wget apt-transport-https
+
+# install minikube
+wget https://storage.googleapis.com/minikube/releases/latest/minikube-linux-amd64
+sudo cp minikube-linux-amd64 /usr/local/bin/minikube
+sudo chmod +x /usr/local/bin/minikube
+
+# start minikube
+# use calico as cni plugin
+minikube start --driver=docker --cpus=4 --memory=8g --disk-size=20g --cni=calico
+
+# verify minikube installation
+❯❯ minikube status
+minikube
+type: Control Plane
+host: Running
+kubelet: Running
+apiserver: Running
+kubeconfig: Configured
+
+
+----
+
+
+# install kubectl
+curl -LO https://storage.googleapis.com/kubernetes-release/release/`curl -s https://storage.googleapis.com/kubernetes-release/release/stable.txt`/bin/linux/amd64/kubectl
+chmod +x kubectl
+sudo mv kubectl /usr/local/bin/
+
+# verify kubectl installation
+❯❯ kubectl version -o yaml
+clientVersion:
+  buildDate: "2021-12-16T11:41:01Z"
+  compiler: gc
+  gitCommit: 86ec240af8cbd1b60bcc4c03c20da9b98005b92e
+  gitTreeState: clean
+  gitVersion: v1.23.1
+  goVersion: go1.17.5
+  major: "1"
+  minor: "23"
+  platform: linux/amd64
+serverVersion:
+  buildDate: "2021-10-27T18:35:25Z"
+  compiler: gc
+  gitCommit: c92036820499fedefec0f847e2054d824aea6cd1
+  gitTreeState: clean
+  gitVersion: v1.22.3
+  goVersion: go1.16.9
+  major: "1"
+  minor: "22"
+  platform: linux/amd64
+  
+    
+---
+
+
+# install helm
+curl -fsSL -o get_helm.sh https://raw.githubusercontent.com/helm/helm/master/scripts/get-helm-3
+chmod 700 get_helm.sh
+./get_helm.sh
+
+# verify helm installation
+❯❯ helm list -A
+NAME	NAMESPACE	REVISION	UPDATED	STATUS	CHART	APP VERSION
+
+
