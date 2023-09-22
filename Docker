@@ -1,5 +1,7 @@
 Installing docker on ubutnu
 -------------------
+Method 1:
+---------
 Docker version 23.0.3
 $  sudo apt update
 $ sudo apt install apt-transport-https ca-certificates curl software-properties-common -y
@@ -13,3 +15,7 @@ $ sudo usermod -aG docker $USER  &&  newgrp docker
 To check:
 $ groups
 $ getent group docker
+
+Method 2:
+---------
+sudo apt-get install docker.io
