@@ -1,0 +1,9 @@
+git add *
+
+To commit change
+
+git commit -a -m "fix: configurations for local minikube"
+
+
+
+git push origin main
